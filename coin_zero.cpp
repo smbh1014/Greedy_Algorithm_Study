@@ -7,7 +7,17 @@ using namespace std;
 
 vector<long long> value;
 
+int select(int N, int K) {
+	int result = 0;
 
+	for (int i = value.size() - 1; i >= 0; i--) {
+		if (K / value[i] > 0) {
+			result += K / value[i];
+			K = K % value[i];
+		}
+	}
+	return result;
+}
 
 int main() {
 
@@ -21,6 +31,8 @@ int main() {
 		value.push_back(val);
 	}
 
+	cout << select(N, K);
 
+	return 0;
 
 }
